@@ -41,6 +41,15 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --animate-toandfro: toandfro 5s ease-in-out infinite;
+  @keyframes toandfro {
+    25%{
+      transform: translateY(-7%);
+    }
+    75%{
+      transform: translateY(7%);
+    }
+  }
 }
 
 :root {
