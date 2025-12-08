@@ -1,6 +1,7 @@
 import { BsArrowRightCircle } from "react-icons/bs"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
+import { RequestShortUrlForm } from "./RequestShortUrlForm"
 
 export const Hero = () => {
   return (
@@ -11,10 +12,8 @@ export const Hero = () => {
         <h2 className="md:text-2xl sm:text-xl text-sm text-center tracking-tight">
             Place Your URL here and make it <br/> shorter in single click
         </h2>
-        <form className="flex gap-2 mt-5">
-            <Input type="text" placeholder="Your Long URL" className="md:w-sm"/>
-            <Button><BsArrowRightCircle/></Button>
-        </form>
+
+        <RequestShortUrlForm />
         <div className="w-50 h-50 rounded-full bg-green-300 blur-3xl absolute top-[-20] left-0 lg:top-[-20] lg:left-150 animate-[pulse_10s_linear_infinite]"></div>
         
         <div className="w-50 h-50 rounded-full bg-green-300 blur-3xl absolute top-100 right-[-50] lg:top-[-20] lg:right-[-50] animate-toandfro"></div>
