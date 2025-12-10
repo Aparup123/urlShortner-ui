@@ -37,10 +37,9 @@ export const UrlResponseModal = ({ open, onClose, shortUrl }:
                                 <span onClick={copyToClipboard} className="cursor-pointer p-2 border rounded-md hover:scale-110"><RxCopy /></span>
                             </TooltipTrigger>
                             <TooltipContent>
-                                <p>Copy URL</p>
+                                <p>Copy URL</p> 
                             </TooltipContent>
                         </Tooltip>
-
                     </div>
                 </div>
                 <div className="flex flex-wrap gap-2 justify-around ">

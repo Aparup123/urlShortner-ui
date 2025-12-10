@@ -1,6 +1,9 @@
 import { RequestShortUrlForm } from "./RequestShortUrlForm"
 
-export const Hero = ({showConversion}:{showConversion:(url:string)=>void}) => {
+export const Hero = ({showConversion}:
+  {
+    showConversion:(url:string)=>void,
+  }) => {
   return (
     <div className="mt-30 flex flex-col gap-4 items-center ">
         <h1 className="md:text-5xl sm:text-3xl text-2xl tracking-tight font-medium">
