@@ -11,14 +11,12 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { useForm } from "react-hook-form"
 import z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
-interface shortUrlResponseData {
-  shortUrl: string,
-  trueUrl: string
-}
+import { ConvertedUrlItem } from "@/types/urlTypes"
+
 
 export const RequestShortUrlForm = ({ showConversion }:
   {
-    showConversion: (url: string) => void,
+    showConversion: (data: ConvertedUrlItem) => void,
   }) => {
   const [isLoading, setIsLoading] = useContext(LoadingContext)
   
@@ -26,10 +24,9 @@ export const RequestShortUrlForm = ({ showConversion }:
     setIsLoading(true)
     try {
       const response = await getShortUrl(values.url)
-      const data: shortUrlResponseData = response.data;
-      const shortUrl = data.shortUrl;
-      console.log(shortUrl)
-      showConversion(shortUrl)
+      const data: ConvertedUrlItem = response.data;
+      showConversion(data)
+      form.reset()
       toast.success("Url Conversion Successful.")
     } catch (e) {
       toast.error("Url Conversion Failed!")

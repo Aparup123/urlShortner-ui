@@ -3,9 +3,9 @@ import { RxCopy } from "react-icons/rx"
 import { Modal } from "./Modal"
 import { Button } from "./ui/button"
 import { BiLinkExternal } from "react-icons/bi"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@radix-ui/react-tooltip"
-import { link } from "fs"
-import { toast } from "sonner"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@radix-ui/react-tooltip"   
+import { copyToClipboard } from "@/utils/copyToClipboard"
+import { openLinkNewTab} from "@/utils/openLinkNewTab"
 
 export const UrlResponseModal = ({ open, onClose, shortUrl }:
     {
@@ -15,14 +15,9 @@ export const UrlResponseModal = ({ open, onClose, shortUrl }:
     }
 ) => {
 
-    const copyToClipboard = async () => {
-        await navigator.clipboard.writeText(shortUrl)
-        toast.success("URL copied to clipboard");
-    }
 
-    const openShortUrl=()=>{
-        window.open(shortUrl, "_blank")
-    }
+
+
 
     return (
         <Modal onClose={onClose} open={open}>
@@ -34,7 +29,7 @@ export const UrlResponseModal = ({ open, onClose, shortUrl }:
                         <p className="font-mono min-w-0 break-all hover:underline cursor-pointer text-link line-clamp-1">{shortUrl}</p>
                         <Tooltip>
                             <TooltipTrigger asChild>
-                                <span onClick={copyToClipboard} className="cursor-pointer p-2 border rounded-md hover:scale-110"><RxCopy /></span>
+                                <span onClick={()=>copyToClipboard(shortUrl)} className="cursor-pointer p-2 border rounded-md hover:scale-110"><RxCopy /></span>
                             </TooltipTrigger>
                             <TooltipContent>
                                 <p>Copy URL</p> 
@@ -44,7 +39,7 @@ export const UrlResponseModal = ({ open, onClose, shortUrl }:
                 </div>
                 <div className="flex flex-wrap gap-2 justify-around ">
                     <Button variant={"destructive"} onClick={onClose} className="flex-1">Close</Button>
-                    <Button onClick={openShortUrl} className="flex-1" >Open <span><BiLinkExternal /></span></Button>
+                    <Button onClick={()=>openLinkNewTab(shortUrl)} className="flex-1" >Open <span><BiLinkExternal /></span></Button>
                 </div>
             </div>
         </Modal>

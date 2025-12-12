@@ -1,8 +1,9 @@
+import { ConvertedUrlItem } from "@/types/urlTypes"
 import { RequestShortUrlForm } from "./RequestShortUrlForm"
 
 export const Hero = ({showConversion}:
   {
-    showConversion:(url:string)=>void,
+    showConversion:(data:ConvertedUrlItem)=>void,
   }) => {
   return (
     <div className="mt-30 flex flex-col gap-4 items-center ">
